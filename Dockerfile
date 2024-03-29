@@ -24,6 +24,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y strace
+
 # ユーザーを作成してグループに追加
 RUN useradd -m -s /bin/bash -G libvirt,kvm dockeruser && \
     echo "dockeruser:dockeruser" | chpasswd
